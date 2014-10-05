@@ -12,6 +12,7 @@ namespace _1DV402.S2.L2C
 		{
 		}
 	}
+}
 	/*
 			static void test
 			{
@@ -42,4 +43,3 @@ namespace _1DV402.S2.L2C
 		}
 	}
 		*/
-}

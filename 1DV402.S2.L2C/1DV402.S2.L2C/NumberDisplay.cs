@@ -14,17 +14,30 @@ namespace _1DV402.S2.L2C
 		public int Number
 		{
 			get { return _number; }
-			private set { _number = value; }
+			set 
+			{ 
+				if ((value >= 0) && (value <= MaxNumber)) 
+					_number = value; 
+				else
+					throw new ArgumentException();
+			}
 		}
 
 		public int MaxNumber
 		{
 			get { return _maxNumber; }
-			private set { _maxNumber = value; }
+			set 
+			{
+				if (value > 0)
+					_maxNumber = value;
+				else
+					throw new ArgumentException();
+			}
 		}
 
+
 		public NumberDisplay(int maxNumber)
-			: this(maxNumber,0 )
+			: this(maxNumber, 0)
 		{
 		}
 
@@ -36,7 +49,8 @@ namespace _1DV402.S2.L2C
 
 		public override bool Equals(object obj)
 		{
-
+			// check if same object
+			if (this == obj) return true;
 			// If parameter is null return false.
 			if (obj == null)
 			{
@@ -72,9 +86,16 @@ namespace _1DV402.S2.L2C
 					(MaxNumber == numberDisplay.MaxNumber));
 		}
 
+		/* Jag har lite problem med att förstå hur GetHashCode ska imlementeras.
+		 * Vad menas med "Lämpligen returnerar metoden hashkoden för t ex textbeskrivningen av fälten". 
+		 * Vad är textbeskrivningen av fälten 
+		 * och hur bestämmer man hashkoden för dessa?
+		 * 
+		 * Kn man inte bara implementera något som ger en unik kod för varje unikt objekt?
+		 */
 		public override int GetHashCode()
 		{
-			return Convert.ToInt32(ToString());
+			return Number.GetHashCode() + 29 * MaxNumber.GetHashCode();
 		}
 		public void Increment()
 		{

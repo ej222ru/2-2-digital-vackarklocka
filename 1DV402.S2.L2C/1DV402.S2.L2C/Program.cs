@@ -21,6 +21,7 @@ namespace _1DV402.S2.L2C
 			Test5(ac2);
 			Test6(ac1);
 			Test7(ac1);
+			Test8();
 		}
 
 		private static bool Test1()
@@ -105,7 +106,7 @@ namespace _1DV402.S2.L2C
 			{
 				ac.Time = time;
 			}
-			catch (FormatException exception)
+			catch (FormatException)
 			{
 				ViewErrorMessage(string.Format(Strings1.ErrorTime, time));
 			}
@@ -113,13 +114,39 @@ namespace _1DV402.S2.L2C
 			{
 				ac.AlarmTimes = alarm;
 			}
-			catch (FormatException exception)
+			catch (FormatException)
 			{
 				ViewErrorMessage(string.Format(Strings1.ErrorTime, alarm));
 			}
 			return ret;
 		}
+		private static bool Test8()
+		{
+			bool ret = true;
+			string timeOK = "22:09";
+			string time = "24:89";
+			string[] alarm = { "7:69" };
+			string[] alarmOK = { "7:33" };
 
+			ViewTestHeader(string.Format("Test 8.\n" + Strings1.Test8, time, alarm[0]), true);
+			try
+			{
+				AlarmClock ac = new AlarmClock(time, alarmOK);
+			}
+			catch (FormatException)
+			{
+				ViewErrorMessage(string.Format(Strings1.ErrorTime, time));
+			}
+			try
+			{
+				AlarmClock ac1 = new AlarmClock(time, alarmOK);
+			}
+			catch (FormatException)
+			{
+				ViewErrorMessage(string.Format(Strings1.ErrorTime, alarm));
+			}
+			return ret;
+		}
 		private static void Run(AlarmClock ac, int minutes)
 		{
 			for (int i = 0; i < minutes; i++)

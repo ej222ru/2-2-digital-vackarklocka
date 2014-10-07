@@ -14,10 +14,12 @@ namespace _1DV402.S2.L2C
 			Test1();
 
 			Test2();
-			Test3();
-			AlarmClock ac = new AlarmClock("7:07", "7:10", "12:34", "22:45");
-			Test4(ac);
-			Test5(ac);
+			AlarmClock ac1 = new AlarmClock(13, 24, 7, 35);
+			Test3(ac1);
+			AlarmClock ac2 = new AlarmClock("7:07", "7:10", "12:34", "22:45");
+			Test4(ac2);
+			Test5(ac2);
+			Test6(ac1);
 		}
 
 		private static bool Test1()
@@ -38,15 +40,14 @@ namespace _1DV402.S2.L2C
 			Console.WriteLine(ac.ToString());
 			return ret;
 		}
-		private static bool Test3()
+		private static bool Test3(AlarmClock ac)
 		{
 			bool ret = true;
-			AlarmClock ac = new AlarmClock(13, 24, 7, 35);
+
 			ViewTestHeader("Test 3.\n" + Strings1.Test3 + "\n");
 			Console.WriteLine(ac.ToString());
 			return ret;
 		}
-
 		private static bool Test4(AlarmClock ac)
 		{
 			bool ret = true;
@@ -71,7 +72,28 @@ namespace _1DV402.S2.L2C
 			} while (--i > 0);
 			return ret;
 		}
-
+		private static bool Test6(AlarmClock ac)
+		{
+			bool ret = true;
+			string time = "6:12";
+			string[] alarm = {"6:15"};
+			ac.Time = time;
+			ac.AlarmTimes = alarm;
+			ViewTestHeader(string.Format("Test 6.\n" + Strings1.Test6, time, alarm[0]), true);
+			int i = 6;
+			do
+			{
+				if (ac.TickTock())
+				{
+					Console.Write(ac.ToString());
+					Alarm();
+					Console.WriteLine("");
+				}
+				else
+					Console.WriteLine(ac.ToString());
+			} while (--i > 0);
+			return ret;
+		}
 		private static void Run(AlarmClock ac, int minutes)
 		{
 			for (int i = 0; i < minutes; i++)
@@ -95,6 +117,14 @@ namespace _1DV402.S2.L2C
 				Console.BackgroundColor = ConsoleColor.DarkRed;
 				Console.WriteLine(Strings1.Frame + "\n" + Strings1.TM + "\n" + Strings1.Modellnr + "\n" + Strings1.Frame + "\n");
 				Console.ResetColor();
+			}
+		}
+		private static void Alarm()
+		{
+			for (int i = 0; i < 3; i++)
+			{
+				Console.Beep();
+				Console.Write(Strings1.Alarm);
 			}
 		}
 	}

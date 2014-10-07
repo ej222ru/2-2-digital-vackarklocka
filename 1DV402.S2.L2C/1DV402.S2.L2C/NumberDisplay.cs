@@ -42,8 +42,8 @@ namespace _1DV402.S2.L2C
 
 		public NumberDisplay(int maxNumber, int number)
 		{
+			MaxNumber = maxNumber; 
 			Number = number;
-			MaxNumber = maxNumber;
 		}
 
 		public override bool Equals(object obj)
@@ -73,8 +73,6 @@ namespace _1DV402.S2.L2C
 		/// <returns></returns>
 		public bool Equals(NumberDisplay numberDisplay)
 		{
-			// check if same object
-			if (this == numberDisplay) return true;
 			// If parameter is null return false:
 			if ((object)numberDisplay == null)
 			{
@@ -100,10 +98,12 @@ namespace _1DV402.S2.L2C
 		}
 		public void Increment()
 		{
-			if (++Number > MaxNumber)
+			if (Number == MaxNumber)
 			{
 				Number = 0;
 			}
+			else
+				Number++;
 		}
 		public override string ToString()
 		{

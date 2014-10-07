@@ -60,6 +60,7 @@ namespace _1DV402.S2.L2C
 			{
 				int i = 0;
 				_time = new ClockDisplay(time);
+				_alarmTimes = new ClockDisplay[alarmTimes.Length];
 				foreach (string alarmTime in alarmTimes)
 				{
 					_alarmTimes[i] = new ClockDisplay(alarmTime);
@@ -109,7 +110,7 @@ namespace _1DV402.S2.L2C
 		public override string ToString()
 		{
 			string formattedAlarmClock = "";
-			formattedAlarmClock = string.Format("{0} (", _time.ToString());
+			formattedAlarmClock = string.Format("{0,8} (", _time.ToString());
 			for (int i=0; i <  _alarmTimes.Length; i++)
 			{
 				formattedAlarmClock += _alarmTimes[i].ToString();

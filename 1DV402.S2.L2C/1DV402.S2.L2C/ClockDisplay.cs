@@ -9,7 +9,7 @@ namespace _1DV402.S2.L2C
 {
 	class ClockDisplay
 	{
-		static string pattern = "^(([0-1]?[0-9})|([2][0-3])):([0-5][0-9])$";
+		static string pattern = "^(([0-1]?[0-9])|([2][0-3])):([0-5][0-9])$";
 		Regex rgx = new Regex(pattern);
 
 		private NumberDisplay _minuteDisplay;
@@ -25,6 +25,8 @@ namespace _1DV402.S2.L2C
 				MatchCollection matches = rgx.Matches(value);
 				if (matches.Count > 0)
 				{
+					_hourDisplay = new NumberDisplay(23);
+					_minuteDisplay = new NumberDisplay(59);
 					string[] res = new string[2];
 					char[] delim = new char[] {':'};
 					res = value.Split(delim, 2);

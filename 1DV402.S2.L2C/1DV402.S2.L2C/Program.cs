@@ -20,6 +20,7 @@ namespace _1DV402.S2.L2C
 			Test4(ac2);
 			Test5(ac2);
 			Test6(ac1);
+			Test7(ac1);
 		}
 
 		private static bool Test1()
@@ -94,6 +95,31 @@ namespace _1DV402.S2.L2C
 			} while (--i > 0);
 			return ret;
 		}
+		private static bool Test7(AlarmClock ac)
+		{
+			bool ret = true;
+			string time = "24:89";
+			string[] alarm = { "7:69" };
+			ViewTestHeader(string.Format("Test 7.\n" + Strings1.Test7, time, alarm[0]), true);
+			try
+			{
+				ac.Time = time;
+			}
+			catch (FormatException exception)
+			{
+				ViewErrorMessage(string.Format(Strings1.ErrorTime, time));
+			}
+			try
+			{
+				ac.AlarmTimes = alarm;
+			}
+			catch (FormatException exception)
+			{
+				ViewErrorMessage(string.Format(Strings1.ErrorTime, alarm));
+			}
+			return ret;
+		}
+
 		private static void Run(AlarmClock ac, int minutes)
 		{
 			for (int i = 0; i < minutes; i++)

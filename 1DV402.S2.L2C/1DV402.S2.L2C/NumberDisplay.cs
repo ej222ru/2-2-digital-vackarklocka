@@ -35,6 +35,9 @@ namespace _1DV402.S2.L2C
 			}
 		}
 
+		int a;
+		int b;
+		if (objecta == objectb) 
 
 		public NumberDisplay(int maxNumber)
 			: this(maxNumber, 0)
@@ -95,12 +98,15 @@ namespace _1DV402.S2.L2C
 		 */
 		public override int GetHashCode()
 		{
-			return Number.GetHashCode() + 29 * MaxNumber.GetHashCode();
+			return Number.GetHashCode() + 100 * MaxNumber.GetHashCode();
+			// eller ToString.GetHAshCode();  ??????
 		}
 		public void Increment()
 		{
 			if (++Number > MaxNumber)
+			{
 				Number = 0;
+			}
 		}
 		public override string ToString()
 		{
@@ -123,28 +129,31 @@ namespace _1DV402.S2.L2C
 			}
 		}
 
-		public static bool operator ==(NumberDisplay a, NumberDisplay b)
+		/// <summary>
+		/// Template from msdn
+		/// </summary>
+		/// <param name="obj_A"></param>
+		/// <param name="obj_B"></param>
+		/// <returns></returns>
+		public static bool operator ==(NumberDisplay obj_A, NumberDisplay obj_B)
 		{
 			// If both are null, or both are same instance, return true.
-			if (System.Object.ReferenceEquals(a, b))
+			if (System.Object.ReferenceEquals(obj_A, obj_B))
 			{
 				return true;
 			}
 
 			// If one is null, but not both, return false.
-			if (((object)a == null) || ((object)b == null))
+			if (((object)obj_A == null) || ((object)obj_B == null))
 			{
 				return false;
 			}
-			return a.Equals(b);
+			return obj_A.Equals(obj_B);
 		}
-		public static bool operator !=(NumberDisplay a, NumberDisplay b)
+		public static bool operator !=(NumberDisplay obj_A, NumberDisplay obj_B)
 		{
-			return !(a == b);
+			return !(obj_A == obj_B);
 		}
-
- 
-  
 	}
 
 }

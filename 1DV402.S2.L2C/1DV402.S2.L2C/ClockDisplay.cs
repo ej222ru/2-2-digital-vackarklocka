@@ -16,7 +16,10 @@ namespace _1DV402.S2.L2C
 		private NumberDisplay _hourDisplay;
 
 		public string Time {
-			get { return string.Format("{0}:{1}", _hourDisplay, _minuteDisplay); }
+			get { 
+				string ret = _hourDisplay.ToString("0") + ":" + _minuteDisplay.ToString("00");
+				return ret;
+			}
 			set 
 			{ 
 				MatchCollection matches = rgx.Matches(value);
@@ -33,14 +36,13 @@ namespace _1DV402.S2.L2C
 			}
 		}
 
-
 		public ClockDisplay()
 			: this(0,0)	{ }
 
 		public ClockDisplay(int hour, int minute)
 		{
-			_hourDisplay = new NumberDisplay(59, hour);
-			_minuteDisplay = new NumberDisplay(12, hour);
+			_hourDisplay = new NumberDisplay(23, hour);
+			_minuteDisplay = new NumberDisplay(59, minute);
 		}
 
 		public ClockDisplay(string time)
@@ -95,7 +97,7 @@ namespace _1DV402.S2.L2C
 		{
 			_minuteDisplay.Increment();
 			if (_minuteDisplay.Number == 0)
-				_hourDisplay.Increment()
+				_hourDisplay.Increment();
 		}
 		public override string ToString()
 		{

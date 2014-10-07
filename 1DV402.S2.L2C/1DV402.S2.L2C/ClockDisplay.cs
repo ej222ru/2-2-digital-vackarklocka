@@ -53,8 +53,7 @@ namespace _1DV402.S2.L2C
 
 		public override bool Equals(object obj)
 		{
-			// check if same object
-			if (this == obj) return true;
+
 			// If parameter is null return false.
 			if (obj == null)
 			{
@@ -102,19 +101,6 @@ namespace _1DV402.S2.L2C
 		public override string ToString()
 		{
 			return Time;
-		}
-		public string ToString(string format)
-		{
-			if (format.Equals("0") || format.Equals("G"))
-				return ToString();
-			else if (format.Equals("00"))
-			{
-				return String.Format("{0,2}", Number);
-			}
-			else
-			{
-				throw new FormatException();
-			}
 		}
 
 		public static bool operator ==(ClockDisplay a, ClockDisplay b)

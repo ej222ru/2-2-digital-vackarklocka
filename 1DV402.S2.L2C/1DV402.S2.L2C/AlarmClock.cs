@@ -46,6 +46,7 @@ namespace _1DV402.S2.L2C
 		public AlarmClock(int hour, int minute, int alarmHour, int alarmMinute)
 		{
 			_time = new ClockDisplay(hour, minute);
+			_alarmTimes = new ClockDisplay[1];
 			_alarmTimes[0] = new ClockDisplay(alarmHour, alarmMinute);
 		}
 
@@ -69,62 +70,75 @@ namespace _1DV402.S2.L2C
 		}
 
 
-		public bool Equals(ClockDisplay clockDisplay)
+		public override bool Equals(object obj)
 		{
-			// If parameter is null return false:
-			if ((object)clockDisplay == null)
+
+			// If parameter is null return false.
+			if (obj == null)
+			{
+				return false;
+			}
+			// If parameter cannot be cast to NumberDisplay return false.
+			AlarmClock alarmClock = obj as AlarmClock;
+			if ((object)alarmClock == null)
 			{
 				return false;
 			}
 			// return true if fields match
-			return ((_hourDisplay == clockDisplay._hourDisplay)
-					&&
-					(_minuteDisplay == clockDisplay._minuteDisplay));
+			return (ToString() == alarmClock.ToString());
 		}
 		public override int GetHashCode()
 		{
 			return ToString().GetHashCode();
 		}
 
+		public bool TickTock()
+		{
+			bool ret = false;
+			_time.Increment();
+			foreach (ClockDisplay alarm in _alarmTimes)
+			{
+				if (_time.Equals(alarm))
+				{
+					ret = true;
+					break;
+				}
+			}
+			return ret;
+		}
 		public override string ToString()
 		{
-			string formattedAlarmClock;
-			formattedAlarmClock = _time.ToString();
-
-			return Time;
-		}
-		public string ToString(string format)
-		{
-			if (format.Equals("0") || format.Equals("G"))
-				return ToString();
-			else if (format.Equals("00"))
+			string formattedAlarmClock = "";
+			formattedAlarmClock = string.Format("{0} (", _time.ToString());
+			for (int i=0; i <  _alarmTimes.Length; i++)
 			{
-				return String.Format("{0,2}", Number);
+				formattedAlarmClock += _alarmTimes[i].ToString();
+				if (i + 1 < _alarmTimes.Length)
+					formattedAlarmClock += ", ";
+				else
+					formattedAlarmClock += ")";
 			}
-			else
-			{
-				throw new FormatException();
-			}
+			return formattedAlarmClock;
 		}
 
-		public static bool operator ==(ClockDisplay a, ClockDisplay b)
+		public static bool operator ==(AlarmClock alarmClock_A, AlarmClock alarmClock_B)
 		{
 			// If both are null, or both are same instance, return true.
-			if (System.Object.ReferenceEquals(a, b))
+			if (System.Object.ReferenceEquals(alarmClock_A, alarmClock_B))
 			{
 				return true;
 			}
 
 			// If one is null, but not both, return false.
-			if (((object)a == null) || ((object)b == null))
+			if (((object)alarmClock_A == null) || ((object)alarmClock_B == null))
 			{
 				return false;
 			}
-			return a.Equals(b);
+			return alarmClock_A.Equals(alarmClock_B);
 		}
-		public static bool operator !=(ClockDisplay a, ClockDisplay b)
+		public static bool operator !=(AlarmClock alarmClock_A, AlarmClock alarmClock_B)
 		{
-			return !(a == b);
+			return !(alarmClock_A == alarmClock_B);
 		}
 
 	}

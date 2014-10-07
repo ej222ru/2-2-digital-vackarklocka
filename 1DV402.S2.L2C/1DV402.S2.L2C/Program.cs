@@ -8,8 +8,30 @@ namespace _1DV402.S2.L2C
 {
 	class Program
 	{
+		const string HorizontalLine = "======================================"; 
 		static void Main(string[] args)
 		{
+			AlarmClock ac = new AlarmClock();
+			ViewTestHeader("Test1");
+			Console.WriteLine(ac.ToString());
+
+		}
+
+		private static void Run(AlarmClock ac, int minutes)
+		{
+			for (int i = 0; i < minutes; i++)
+			{
+				ac.TickTock();
+			}
+		}
+		private static void ViewErrorMessage(string message)
+		{
+			Console.WriteLine(message);
+		}
+		private static void ViewTestHeader(string message)
+		{
+			Console.WriteLine(HorizontalLine);
+			Console.WriteLine(message);
 		}
 	}
 }

@@ -186,4 +186,7 @@
   <data name="Test9" xml:space="preserve">
     <value>Testar konstruktorer så att undantag kastas då tid {0} och alarmtid {1} tilldelas negativa värden.</value>
   </data>
+  <data name="TestOK" xml:space="preserve">
+    <value>Alla tester körda</value>
+  </data>
 </root>

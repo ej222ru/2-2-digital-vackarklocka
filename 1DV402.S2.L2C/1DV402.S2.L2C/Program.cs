@@ -37,6 +37,12 @@ namespace _1DV402.S2.L2C
 			{  // open catch for everything really unexpected
 				myTest.ViewErrorMessage(exception.Message);
 			}
+			Console.WriteLine("");
+			Console.WriteLine("");
+			Console.BackgroundColor = ConsoleColor.DarkBlue;
+			Console.WriteLine(Strings1.TestOK);
+			Console.WriteLine("");
+			Console.ResetColor();
 		}
 
 	}

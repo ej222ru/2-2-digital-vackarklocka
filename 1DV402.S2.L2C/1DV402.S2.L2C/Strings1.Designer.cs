@@ -259,6 +259,15 @@ namespace _1DV402.S2.L2C {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alla tester körda.
+        /// </summary>
+        internal static string TestOK {
+            get {
+                return ResourceManager.GetString("TestOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ||      Väckarklockan URLED (TM)      ||.
         /// </summary>
         internal static string TM {

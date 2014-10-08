@@ -282,7 +282,7 @@ namespace _1DV402.S2.L2C
 			try
 			{
 
-				ViewTestHeader("Test 14.\n" + Strings1.Test14);
+				ViewTestHeader(string.Format("Test 14. \n" + Strings1.Test14, times[2]));
 				AlarmClock ac3 = new AlarmClock("7:07", "7:10", "NoValidAlarm", "22:45");
 			}
 			catch (FormatException)

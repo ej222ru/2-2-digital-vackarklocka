@@ -9,12 +9,18 @@ namespace _1DV402.S2.L2C
 {
 	class ClockDisplay
 	{
+		/// <summary>
+		/// Regular expression checking that a string meets the format HH:mm as HH ranging 0-23 and mm 0-23
+		/// </summary>
 		static string pattern = "^(([0-1]?[0-9])|([2][0-3])):([0-5][0-9])$";
 		Regex rgx = new Regex(pattern);
 
 		private NumberDisplay _minuteDisplay;
 		private NumberDisplay _hourDisplay;
-
+		/// <summary>
+		/// Instantiates NumberDisplay objects for hour and minute if given value meets the format 
+		/// condition HH:mm and also have valid values for hour (0-23) and minute (0-59)
+		/// </summary>
 		public string Time {
 			get { 
 				string ret = _hourDisplay.ToString("0") + ":" + _minuteDisplay.ToString("00");
@@ -94,6 +100,9 @@ namespace _1DV402.S2.L2C
 		{
 			return ToString().GetHashCode();
 		}
+		/// <summary>
+		/// Add one minute and step hour if needed
+		/// </summary>
 		public void Increment()
 		{
 			_minuteDisplay.Increment();

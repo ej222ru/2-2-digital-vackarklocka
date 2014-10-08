@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace _1DV402.S2.L2C
 {
+	/// <summary>
+	/// Class that holds a number and a maxNumber which number must be less or equal to
+	/// number must also be equal or greater than 0
+	/// </summary>
 	class NumberDisplay
 	{
 		private int _number;
@@ -96,6 +100,9 @@ namespace _1DV402.S2.L2C
 			return Number.GetHashCode() + 100 * MaxNumber.GetHashCode();
 			// eller ToString.GetHAshCode();  ??????
 		}
+		/// <summary>
+		/// Increments number up to maxNumber, after that it returns to 0
+		/// </summary>
 		public void Increment()
 		{
 			if (Number == MaxNumber)

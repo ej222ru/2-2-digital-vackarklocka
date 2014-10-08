@@ -10,7 +10,9 @@ namespace _1DV402.S2.L2C
 	{
 		private ClockDisplay[] _alarmTimes;
 		private ClockDisplay _time;
-
+		/// <summary>
+		/// Property AlarmTimes can be initialized to a dynamic number of alarm times given as HH:mm
+		/// </summary>
 		public string[] AlarmTimes
 		{
 			get 
@@ -30,7 +32,9 @@ namespace _1DV402.S2.L2C
 				} 
 			}
 		}
-
+		/// <summary>
+		/// Property Time is set on format HH:mm
+		/// </summary>
 		public string Time
 		{
 			get { return _time.Time; }
@@ -42,14 +46,24 @@ namespace _1DV402.S2.L2C
 
 		public AlarmClock(int hour, int minute)
 			: this(hour, minute, 0, 0) { }
-
+		/// <summary>
+		/// Instantiates a ClockObject for time and a ClockObject for alarm time
+		/// </summary>
+		/// <param name="hour"></param>
+		/// <param name="minute"></param>
+		/// <param name="alarmHour"></param>
+		/// <param name="alarmMinute"></param>
 		public AlarmClock(int hour, int minute, int alarmHour, int alarmMinute)
 		{
 			_time = new ClockDisplay(hour, minute);
 			_alarmTimes = new ClockDisplay[1];
 			_alarmTimes[0] = new ClockDisplay(alarmHour, alarmMinute);
 		}
-
+		/// <summary>
+		/// Instantiates a ClockObject for time and a number of ClockObjects for alarm times
+		/// </summary>
+		/// <param name="time"></param>
+		/// <param name="alarmTimes"></param>
 		public AlarmClock(string time, params string[] alarmTimes) 
 		{
 			if (alarmTimes.Length < 1)
@@ -92,7 +106,10 @@ namespace _1DV402.S2.L2C
 		{
 			return ToString().GetHashCode();
 		}
-
+		/// <summary>
+		/// Steps time one minute. Returns true when time equals any defined alarm time
+		/// </summary>
+		/// <returns></returns>
 		public bool TickTock()
 		{
 			bool ret = false;

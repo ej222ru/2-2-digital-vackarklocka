@@ -42,7 +42,7 @@ namespace _1DV402.S2.L2C
 		{
 			bool ret = true;
 			AlarmClock ac = new AlarmClock();
-			ViewTestHeader("Test 1.\n" + Strings1.Test1 + "\n");
+			ViewTestHeader("Test 1.\n" + Strings1.Test1);
 			Console.WriteLine(ac.ToString());
 			return ret;
 		}
@@ -60,7 +60,7 @@ namespace _1DV402.S2.L2C
 		{
 			bool ret = true;
 
-			ViewTestHeader("Test 3.\n" + Strings1.Test3 + "\n");
+			ViewTestHeader("Test 3.\n" + Strings1.Test3);
 			Console.WriteLine(ac.ToString());
 			return ret;
 		}
@@ -68,7 +68,7 @@ namespace _1DV402.S2.L2C
 		{
 			bool ret = true;
 
-			ViewTestHeader("Test 4.\n" + Strings1.Test4 + "\n");
+			ViewTestHeader("Test 4.\n" + Strings1.Test4);
 			Console.WriteLine(ac.ToString());
 			return ret;
 		}
@@ -115,7 +115,7 @@ namespace _1DV402.S2.L2C
 			bool ret = true;
 			string time = "24:89";
 			string[] alarm = { "7:69" };
-			ViewTestHeader(string.Format("Test 7.\n" + Strings1.Test7, time, alarm[0]), true);
+			ViewTestHeader(string.Format("Test 7.\n" + Strings1.Test7, time, alarm[0]));
 			try
 			{
 				ac.Time = time;
@@ -142,7 +142,7 @@ namespace _1DV402.S2.L2C
 			string[] alarm = { "7:69" };
 			string[] alarmOK = { "7:33" };
 
-			ViewTestHeader(string.Format("Test 8.\n" + Strings1.Test8, time, alarm[0]), true);
+			ViewTestHeader(string.Format("Test 8.\n" + Strings1.Test8, time, alarm[0]));
 			try
 			{
 				AlarmClock ac = new AlarmClock(time, alarmOK);
@@ -169,7 +169,7 @@ namespace _1DV402.S2.L2C
 			string[] alarm = { "-7:14" };
 			string[] alarmOK = { "7:33" };
 
-			ViewTestHeader(string.Format("Test 9.\n" + Strings1.Test9, time, alarm[0]), true);
+			ViewTestHeader(string.Format("Test 9.\n" + Strings1.Test9, time, alarm[0]));
 			try
 			{
 				AlarmClock ac = new AlarmClock(time, alarmOK);
@@ -224,7 +224,7 @@ namespace _1DV402.S2.L2C
 			string[] alarm = { "NoValidAlarmTime" };
 			string[] alarmOK = { "7:33" };
 
-			ViewTestHeader(string.Format("Test 11.\n" + Strings1.Test11, time, alarm[0]), true);
+			ViewTestHeader(string.Format("Test 11.\n" + Strings1.Test11, time, alarm[0]));
 			try
 			{
 				AlarmClock ac = new AlarmClock(time, alarmOK);
@@ -284,7 +284,7 @@ namespace _1DV402.S2.L2C
 			try
 			{
 
-				ViewTestHeader("Test 14.\n" + Strings1.Test14 + "\n");
+				ViewTestHeader("Test 14.\n" + Strings1.Test14);
 				AlarmClock ac3 = new AlarmClock("7:07", "7:10", "NoValidAlarm", "22:45");
 			}
 			catch (FormatException)
@@ -299,7 +299,7 @@ namespace _1DV402.S2.L2C
 			string[] times = {"7:07"};
 			try
 			{
-				ViewTestHeader("Test 15.\n" + Strings1.Test15 + "\n");
+				ViewTestHeader("Test 15.\n" + Strings1.Test15 );
 				AlarmClock ac3 = new AlarmClock("7:07");
 			}
 			catch (ArgumentException argumentException)
@@ -318,7 +318,7 @@ namespace _1DV402.S2.L2C
 		}
 		private static void ViewErrorMessage(string message)
 		{
-			Console.BackgroundColor = ConsoleColor.DarkRed;
+			Console.BackgroundColor = ConsoleColor.Red;
 			Console.WriteLine(message);
 			Console.ResetColor();
 		}

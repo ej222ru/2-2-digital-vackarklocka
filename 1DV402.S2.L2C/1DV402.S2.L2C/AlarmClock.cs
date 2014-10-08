@@ -54,7 +54,7 @@ namespace _1DV402.S2.L2C
 		{
 			if (alarmTimes.Length < 1)
 			{
-				// do something... exception error msg?
+				throw new ArgumentException("Not enought parameters in contructor call to AlarmClock");
 			}
 			else
 			{

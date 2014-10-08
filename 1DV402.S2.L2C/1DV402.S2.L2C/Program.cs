@@ -11,17 +11,31 @@ namespace _1DV402.S2.L2C
 		const string HorizontalLine = "======================================"; 
 		static void Main(string[] args)
 		{
-			Test1();
+			try
+			{
+				Test1();
 
-			Test2();
-			AlarmClock ac1 = new AlarmClock(13, 24, 7, 35);
-			Test3(ac1);
-			AlarmClock ac2 = new AlarmClock("7:07", "7:10", "12:34", "22:45");
-			Test4(ac2);
-			Test5(ac2);
-			Test6(ac1);
-			Test7(ac1);
-			Test8();
+				Test2();
+				AlarmClock ac1 = new AlarmClock(13, 24, 7, 35);
+				Test3(ac1);
+				AlarmClock ac2 = new AlarmClock("7:07", "7:10", "12:34", "22:45");
+				Test4(ac2);
+				Test5(ac2);
+				Test6(ac1);
+				Test7(ac1);
+				Test8();
+				Test9();
+				Test10();
+				Test11();
+				Test12();
+				Test13();
+				Test14();
+				Test15();
+			}
+			catch(Exception exception)
+			{  // open catch for everything really unexpected
+				ViewErrorMessage(exception.Message);
+			}
 		}
 
 		private static bool Test1()
@@ -147,6 +161,154 @@ namespace _1DV402.S2.L2C
 			}
 			return ret;
 		}
+		private static bool Test9()
+		{
+			bool ret = true;
+			string timeOK = "12:09";
+			string time = "-4:89";
+			string[] alarm = { "-7:14" };
+			string[] alarmOK = { "7:33" };
+
+			ViewTestHeader(string.Format("Test 9.\n" + Strings1.Test9, time, alarm[0]), true);
+			try
+			{
+				AlarmClock ac = new AlarmClock(time, alarmOK);
+			}
+			catch (FormatException)
+			{
+				ViewErrorMessage(string.Format(Strings1.ErrorTime, time));
+			}
+			try
+			{
+				AlarmClock ac1 = new AlarmClock(time, alarmOK);
+			}
+			catch (FormatException)
+			{
+				ViewErrorMessage(string.Format(Strings1.ErrorTime, alarm));
+			}
+			return ret;
+		}
+		private static bool Test10()
+		{
+			bool ret = true;
+			int hour = -9;
+			int minute = 42;
+			ViewTestHeader(string.Format("Test 10. \n" + Strings1.Test9, hour, minute));
+			try
+			{
+				AlarmClock ac1 = new AlarmClock(hour, minute);
+
+			}
+			catch (ArgumentException)
+			{
+				ViewErrorMessage(string.Format(Strings1.ErrorHour, hour));
+			}
+
+			try
+			{
+				hour = 9;
+				minute = -42;
+				AlarmClock ac2 = new AlarmClock(hour, minute);
+			}
+			catch (ArgumentException)
+			{
+				ViewErrorMessage(string.Format(Strings1.ErrorMinute, minute));
+			}
+			return ret;
+		}
+		private static bool Test11()
+		{
+			bool ret = true;
+			string timeOK = "12:09";
+			string time = "NoValidTime";
+			string[] alarm = { "NoValidAlarmTime" };
+			string[] alarmOK = { "7:33" };
+
+			ViewTestHeader(string.Format("Test 11.\n" + Strings1.Test11, time, alarm[0]), true);
+			try
+			{
+				AlarmClock ac = new AlarmClock(time, alarmOK);
+			}
+			catch (FormatException)
+			{
+				ViewErrorMessage(string.Format(Strings1.ErrorTime, time));
+			}
+			try
+			{
+				AlarmClock ac1 = new AlarmClock(time, alarmOK);
+			}
+			catch (FormatException)
+			{
+				ViewErrorMessage(string.Format(Strings1.ErrorTime, alarm));
+			}
+			return ret;
+		}
+		private static bool Test12()
+		{
+			bool ret = true;
+			int maxNumber = -9;
+
+			try
+			{
+				ViewTestHeader(string.Format("Test 12. \n" + Strings1.Test12, maxNumber));
+				NumberDisplay nd = new NumberDisplay(maxNumber);
+			}
+			catch (ArgumentException)
+			{
+				ViewErrorMessage(string.Format(Strings1.ErrorMaxNumber, maxNumber));
+			}
+
+			return ret;
+		}
+		private static bool Test13()
+		{
+			bool ret = true;
+			string time = "NoValidTime";
+
+			try
+			{
+				ViewTestHeader(string.Format("Test 13. \n" + Strings1.Test13, time));
+				ClockDisplay nd = new ClockDisplay(time);
+			}
+			catch (FormatException)
+			{
+				ViewErrorMessage(string.Format(Strings1.ErrorTime, time));
+			}
+
+			return ret;
+		}
+		private static bool Test14()
+		{
+			bool ret = true;
+			string[] times = {"7:07", "7:10", "NoValidAlarm", "22:45"};
+			try
+			{
+
+				ViewTestHeader("Test 14.\n" + Strings1.Test14 + "\n");
+				AlarmClock ac3 = new AlarmClock("7:07", "7:10", "NoValidAlarm", "22:45");
+			}
+			catch (FormatException)
+			{
+				ViewErrorMessage(string.Format(Strings1.ErrorTime, times[2]));
+			}
+			return ret;
+		}
+		private static bool Test15()
+		{
+			bool ret = true;
+			string[] times = {"7:07"};
+			try
+			{
+				ViewTestHeader("Test 15.\n" + Strings1.Test15 + "\n");
+				AlarmClock ac3 = new AlarmClock("7:07");
+			}
+			catch (ArgumentException argumentException)
+			{
+				ViewErrorMessage(argumentException.Message);
+			}
+			return ret;
+		}
+
 		private static void Run(AlarmClock ac, int minutes)
 		{
 			for (int i = 0; i < minutes; i++)
@@ -162,6 +324,7 @@ namespace _1DV402.S2.L2C
 		}
 		private static void ViewTestHeader(string message, bool printTM=false)
 		{
+			Console.WriteLine("");
 			Console.WriteLine(HorizontalLine);
 			Console.WriteLine(message);
 			Console.WriteLine("");

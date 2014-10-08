@@ -26,7 +26,7 @@ namespace _1DV402.S2.L2C
 			}
 			set
 			{
-				for (int i = 0; i < _alarmTimes.Length; i++)
+				for (int i = 0; i < value.Length; i++)
 				{
 					_alarmTimes[i] = new ClockDisplay(value[i]);
 				} 
@@ -58,6 +58,7 @@ namespace _1DV402.S2.L2C
 			_time = new ClockDisplay(hour, minute);
 			_alarmTimes = new ClockDisplay[1];
 			_alarmTimes[0] = new ClockDisplay(alarmHour, alarmMinute);
+
 		}
 		/// <summary>
 		/// Instantiates a ClockObject for time and a number of ClockObjects for alarm times
@@ -75,13 +76,8 @@ namespace _1DV402.S2.L2C
 				int i = 0;
 				_time = new ClockDisplay(time);
 				_alarmTimes = new ClockDisplay[alarmTimes.Length];
-				foreach (string alarmTime in alarmTimes)
-				{
-					_alarmTimes[i] = new ClockDisplay(alarmTime);
-					i++;
-				}
+				AlarmTimes = alarmTimes;
 			}
-			
 		}
 
 

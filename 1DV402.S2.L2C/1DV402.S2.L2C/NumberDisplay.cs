@@ -92,7 +92,7 @@ namespace _1DV402.S2.L2C
 		 */
 		public override int GetHashCode()
 		{
-			return Number.GetHashCode() + 100 * MaxNumber.GetHashCode();
+			return Number.ToString().GetHashCode() + 100 * MaxNumber.ToString().GetHashCode();
 			// eller ToString.GetHAshCode();  ??????
 		}
 		/// <summary>

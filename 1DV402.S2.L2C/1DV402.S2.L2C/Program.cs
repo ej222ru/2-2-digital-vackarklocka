@@ -17,7 +17,7 @@ namespace _1DV402.S2.L2C
 				myTest.Test1();
 
 				myTest.Test2();
-				AlarmClock ac1 = new AlarmClock(13, 24, 7, 35);
+				AlarmClock ac1 = new AlarmClock(13, 24, 7, 8);
 				myTest.Test3(ac1);
 				AlarmClock ac2 = new AlarmClock("7:07", "7:10", "12:34", "22:45");
 				myTest.Test4(ac2);

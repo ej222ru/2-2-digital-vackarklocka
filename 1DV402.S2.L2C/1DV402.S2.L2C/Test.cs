@@ -162,7 +162,6 @@ namespace _1DV402.S2.L2C
 		public bool Test9()
 		{
 			bool ret = true;
-			string timeOK = "12:09";
 			string time = "-4:89";
 			string[] alarm = { "-7:14" };
 			string[] alarmOK = { "7:33" };
@@ -217,7 +216,6 @@ namespace _1DV402.S2.L2C
 		public bool Test11()
 		{
 			bool ret = true;
-			string timeOK = "12:09";
 			string time = "NoValidTime";
 			string[] alarm = { "NoValidAlarmTime" };
 			string[] alarmOK = { "7:33" };

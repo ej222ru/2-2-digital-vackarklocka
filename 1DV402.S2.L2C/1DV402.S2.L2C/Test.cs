@@ -37,6 +37,22 @@ namespace _1DV402.S2.L2C
 				Console.Write(Strings1.Alarm);
 			}
 		}
+		private static void Run(AlarmClock ac, int minutes)
+		{
+			for (int i = 0; i < minutes; i++)
+			{
+				if (ac.TickTock())
+				{
+					Console.Write(ac.ToString());
+					Alarm();
+					Console.WriteLine("");
+				}
+				else
+					Console.WriteLine(ac.ToString());
+			}
+		}
+
+
 		public bool Test1()
 		{
 			bool ret = true;
@@ -78,13 +94,8 @@ namespace _1DV402.S2.L2C
 			ac.Time = time;
 
 			ViewTestHeader(string.Format("Test 5.\n" + Strings1.Test5, time), true);
+			Run(ac, 13);
 
-			int i = 13;
-			do
-			{
-				ac.TickTock();
-				Console.WriteLine(ac.ToString());
-			} while (--i > 0);
 			return ret;
 		}
 		public bool Test6(AlarmClock ac)
@@ -95,18 +106,7 @@ namespace _1DV402.S2.L2C
 			ac.Time = time;
 			ac.AlarmTimes = alarm;
 			ViewTestHeader(string.Format("Test 6.\n" + Strings1.Test6, time, alarm[0]), true);
-			int i = 6;
-			do
-			{
-				if (ac.TickTock())
-				{
-					Console.Write(ac.ToString());
-					Alarm();
-					Console.WriteLine("");
-				}
-				else
-					Console.WriteLine(ac.ToString());
-			} while (--i > 0);
+			Run(ac, 6);
 			return ret;
 		}
 		public bool Test7(AlarmClock ac)

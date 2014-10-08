@@ -38,14 +38,6 @@ namespace _1DV402.S2.L2C
 				myTest.ViewErrorMessage(exception.Message);
 			}
 		}
-	
-		private static void Run(AlarmClock ac, int minutes)
-		{
-			for (int i = 0; i < minutes; i++)
-			{
-				ac.TickTock();
-			}
-		}
 
 	}
 }

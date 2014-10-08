@@ -44,15 +44,12 @@ namespace _1DV402.S2.L2C
 			}
 		}
 
-		public ClockDisplay()
-			: this(0,0)	{ }
-
+		public ClockDisplay(): this(0,0)	{ }
 		public ClockDisplay(int hour, int minute)
 		{
 			_hourDisplay = new NumberDisplay(23, hour);
 			_minuteDisplay = new NumberDisplay(59, minute);
 		}
-
 		public ClockDisplay(string time)
 		{
 			// time comes as HH:mm

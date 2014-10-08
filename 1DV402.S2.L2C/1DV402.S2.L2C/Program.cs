@@ -38,7 +38,6 @@ namespace _1DV402.S2.L2C
 				myTest.ViewErrorMessage(exception.Message);
 			}
 		}
-
 	
 		private static void Run(AlarmClock ac, int minutes)
 		{

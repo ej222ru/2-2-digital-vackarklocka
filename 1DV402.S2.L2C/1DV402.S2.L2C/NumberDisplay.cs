@@ -26,7 +26,6 @@ namespace _1DV402.S2.L2C
 					throw new ArgumentException();
 			}
 		}
-
 		public int MaxNumber
 		{
 			get { return _maxNumber; }
@@ -38,12 +37,9 @@ namespace _1DV402.S2.L2C
 					throw new ArgumentException();
 			}
 		}
-
-		public NumberDisplay(int maxNumber)
-			: this(maxNumber, 0)
+		public NumberDisplay(int maxNumber)	: this(maxNumber, 0)
 		{
 		}
-
 		public NumberDisplay(int maxNumber, int number)
 		{
 			MaxNumber = maxNumber; 
@@ -69,7 +65,6 @@ namespace _1DV402.S2.L2C
 					&&
 					(MaxNumber == numberDisplay.MaxNumber));
 		}
-
 		/// <summary>
 		/// Also implement Equals(type) for enhanced peformance according to msdn
 		/// </summary>
